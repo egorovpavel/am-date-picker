@@ -8,7 +8,8 @@
                 <md-button class="md-icon-button"
                            ng-click="amDatePicker.openPicker($event)"
                            aria-label="Clear">
-                   <md-icon md-svg-icon="{{ amDatePicker.calendarIcon }}" ng-if="amDatePicker.showInputIcon"></md-icon>
+                   <md-icon ng-if="amDatePicker.fontIcon && amDatePicker.showInputIcon">{{ amDatePicker.calendarIcon }}</md-icon>
+                   <md-icon md-svg-icon="{{ amDatePicker.calendarIcon }}" ng-if="!amDatePicker.fontIcon && amDatePicker.showInputIcon"></md-icon>
                 </md-button>
             </div>
 
@@ -21,7 +22,8 @@
                 <md-button class="md-icon-button"
                            ng-click="amDatePicker.clearDate()"
                            aria-label="Clear">
-                    <md-icon md-svg-icon="{{ amDatePicker.clearIcon }}"></md-icon>
+                    <md-icon ng-if="amDatePicker.fontIcon">{{ amDatePicker.clearIcon }}</md-icon>
+                    <md-icon ng-if="!amDatePicker.fontIcon" md-svg-icon="{{ amDatePicker.clearIcon }}"></md-icon>
                 </md-button>
             </div>
         </md-input-container>
@@ -49,6 +51,10 @@
                        class="md-icon-button"
                        aria-label="Prev Month Button">
                 <md-icon aria-label="Prev"
+                         ng-if="amDatePicker.fontIcon"
+                         class="am-date-picker__chevron">{{ dialog.prevIcon }}</md-icon>
+                <md-icon aria-label="Prev"
+                         ng-if="!amDatePicker.fontIcon"
                          class="am-date-picker__chevron"
                          md-svg-icon="{{ dialog.prevIcon }}"></md-icon>
 
@@ -63,6 +69,11 @@
                         class="md-icon-button"
                         aria-label="Next Month Button">
                 <md-icon aria-label="Next"
+                         ng-if="amDatePicker.fontIcon"
+                         class="am-date-picker__chevron">
+                         {{ dialog.nextIcon }}</md-icon>
+                <md-icon aria-label="Next"
+                         ng-if="!amDatePicker.fontIcon" 
                          class="am-date-picker__chevron"
                          md-svg-icon="{{ dialog.nextIcon }}"></md-icon>
             </md-button>

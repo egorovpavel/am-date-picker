@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -19,6 +19,7 @@
         config.showInputIcon = false;
 
         /* Icons */
+        config.fontIcon = false;
         config.calendarIcon = '/dist/images/icons/ic_today_24px.svg';
         config.clearIcon = '/dist/images/icons/ic_close_24px.svg';
         config.nextIcon = '/dist/images/icons/ic_chevron_right_18px.svg';
@@ -34,24 +35,24 @@
             for (var key in options) {
                 config[key] = options[key];
             }
-         }
+        }
 
-        this.$get = function () {
+        this.$get = function() {
             return new amDatePickerService(OPTIONS, config);
         };
 
     }
 
 
-    function amDatePickerService(properties, config){
-        for(var property in properties){
+    function amDatePickerService(properties, config) {
+        for (var property in properties) {
             createProperty(this, properties[property], config[properties[property]]);
         }
 
-        function createProperty(obj, name, value){
+        function createProperty(obj, name, value) {
             Object.defineProperty(obj, name, {
                 __proto__: null,
-                get: function(){
+                get: function() {
                     return value;
                 }
             });
